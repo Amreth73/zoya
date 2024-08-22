@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="pro_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+
+
+li {
+	margin-left: 16px;
+}
+
+a {
+	cursor: pointer;
+}
+
+#c1 {
+	max-width: 991px;
+	width: 100%;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.toolbar1 {
+	padding: 16px;
+	background: #eee;
+}
+.toolbar1 .head1 {
+	display: flex;
+	grid-gap: 10px;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
+}
+.toolbar1 .head1 > input {
+	max-width: 100px;
+	padding: 6px 10px;
+	border-radius: 6px;
+	border: 2px solid #ddd;
+	outline: none;
+}
+.toolbar1 .head1 select {
+	background: #fff;
+	border: 2px solid #ddd;
+	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
+}
+.toolbar1 .head1 .color1 {
+	background: #fff;
+	border: 2px solid #ddd;
+	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	grid-gap: 6px;
+	padding: 0 10px;
+}
+.toolbar1 .head1 .color1 span {
+	font-size: 14px;
+}
+.toolbar1 .head1 .color1 input {
+	border: none;
+	padding: 0;
+	width: 26px;
+	height: 26px;
+	background: #fff;
+	cursor: pointer;
+}
+.toolbar1 .head1 .color1 input::-moz-color-swatch {
+	width: 20px;
+	height: 20px;
+	border: none;
+	border-radius: 50%;
+}
+.toolbar1 .btn-toolbar1 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	grid-gap: 10px;
+}
+.toolbar1 .btn-toolbar1 button {
+	background: #fff;
+	border: 2px solid #ddd;
+	border-radius: 6px;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+}
+.toolbar1 .btn-toolbar1 button:hover {
+	background: #f3f3f3;
+}
+#content1 {
+	padding: 16px;
+	outline: none;
+	max-height: 50vh;
+	overflow: auto;
+}
+#show-code1[data-active="true"] {
+	background: #eee;
+}
+.container{
+    /* display: none;
+    flex-direction: row; */
+}
+
+</style>
+<body>
+    <div class="up_nav">
+        <div class="upper">
+            <img src="images/goya(1).png" alt="logo" class="com_logo">
+        </div>
+        <div class="upper2">
+            <div  onclick="togglePopup()">
+                <a href="#alert" class="noti_icon"><i class="fa-regular fa-bell"></i></a>
+            </div>    
+        <div class="user_icon" onclick="togglePopup()">
+            <h2>Ms</h2>
+        </div>
+
+    </div>
+    </div>
+    <div id="userPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup()">&times;</span>
+            <p class="admin-name">John Doe</p>
+            <p>john.doe@example.com</p>
+            <button onclick="manageAccount()">Manage Account</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <div class="container"> 
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="create_orders.html"><i class="fas fa-box"></i> Orders</a></li>
+                    <li class="has-sub-menu active"><a href="manage_products.html"><i class="fas fa-tags"></i> Products</a></li>
+                    <li><a href="collections.html"><i class="fa-solid fa-boxes-stacked"></i>Collections</a></li>
+                    <li><a href="newinventory.html"><i class="fas fa-warehouse"></i> Inventory</a></li>
+                    <li><a href="gift_cards.html"><i class="fas fa-gift"></i> Gift Cards</a></li>
+                    <li><a href="discount.html"><i class="fas fa-percent"></i> Discounts</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <header>
+                <h1>Add Product</h1>
+            </header>
+            <div class="pro">
+                <div class="col1">
+                    <form id="productForm">
+                        <div class="form-section">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" required placeholder="Product Name">
+                        </div>
+                        <div class="form-section">
+                            <label for="description">Description</label>
+                         
+                            
+<div id="c1">
+		<div class="toolbar1">
+			<div class="head1">
+				<select id="formatSelect" onchange="formatDoc('formatBlock', this.value); updateSelectValue(this);">
+    <option value="" selected="" hidden="" disabled="">Format</option>
+    <option value="h1">Heading 1</option>
+    <option value="h2">Heading 2</option>
+    <option value="h3">Heading 3</option>
+    <option value="h4">Heading 4</option>
+    <option value="h5">Heading 5</option>
+    <option value="h6">Heading 6</option>
+    <option value="p">Paragraph</option>
+</select>
+
+			<select onchange="formatDoc('fontSize', this.value); this.setAttribute('value', this.options[this.selectedIndex].text);">
+    <option value="" selected hidden disabled>Font size</option>
+    <option value="1">Extra small</option>
+    <option value="2">Small</option>
+    <option value="3">Regular</option>
+    <option value="4">Medium</option>
+    <option value="5">Large</option>
+    <option value="6">Extra Large</option>
+    <option value="7">Big</option>
+</select>
+
+				<div class="color1">
+					<span>Color</span>
+					<input type="color" oninput="formatDoc('foreColor', this.value); this.value='#000000';">
+				</div>
+				<div class="color1">
+					<span>Background</span>
+					<input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#000000';">
+				</div>
+			</div>
+			<div class="btn-toolbar1">
+				<button onclick="formatDoc('undo')"><i class='bx bx-undo' ></i></button>
+				<button onclick="formatDoc('redo')"><i class='bx bx-redo' ></i></button>
+				<button onclick="formatDoc('bold')"><i class='bx bx-bold'></i></button>
+				<button onclick="formatDoc('underline')"><i class='bx bx-underline' ></i></button>
+				<button onclick="formatDoc('italic')"><i class='bx bx-italic' ></i></button>
+				<button onclick="formatDoc('strikeThrough')"><i class='bx bx-strikethrough' ></i></button>
+				<button onclick="formatDoc('justifyLeft')"><i class='bx bx-align-left' ></i></button>
+				<button onclick="formatDoc('justifyCenter')"><i class='bx bx-align-middle' ></i></button>
+				<button onclick="formatDoc('justifyRight')"><i class='bx bx-align-right' ></i></button>
+				<button onclick="formatDoc('justifyFull')"><i class='bx bx-align-justify' ></i></button>
+				<button onclick="formatDoc('insertOrderedList')"><i class='bx bx-list-ol' ></i></button>
+				<button onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul' ></i></button>
+				<button onclick="addLink()"><i class='bx bx-link' ></i></button>
+				<button onclick="formatDoc('unlink')"><i class='bx bx-unlink' ></i></button>
+				<button id="show-code1" data-active="false">&lt;/&gt;</button>
+			</div>
+		</div>
+		<div id="content1" contenteditable="true" spellcheck="false" aria-placeholder="description">
+            <!-- Lorem, ipsum. -->
+        </div>
+        <!-- <textarea id="description" name="description" required placeholder="Description"></textarea> -->
+	</div>
+	
+	
+                        </div>
+                        <div class="form-section">
+                            <label for="media">Media</label>
+                            <div class="media-upload" id="media-upload">
+                                <input type="file" id="file-input" class="file-input" accept="image/*" multiple hidden>
+                                <button type="button" class="upload_btn" onclick="document.getElementById('file-input').click();">Upload new</button>
+                                <button type="button" class="select_btn">Select existing</button>
+                                <p>Accepts images, videos, or 3D models</p>
+                                <div class="drag-area" id="drag-area">
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="form-section">
+                            <label for="category">Category</label>
+                            <input type="text" id="category" name="category" required placeholder="Description">
+                        </div>
+
+                        <div class="form-section denominations-section">
+                            <label for="denominations">Denominations</label>
+                            <div id="denominations-container">
+                                <div class="denomination-row">
+                                    <input type="number" name="denominations[]" placeholder="100.0">
+                                    <button type="button" class="remove-denomination" onclick="removeDenomination(this)">Remove</button>
+                                </div>
+                                <div class="denomination-row">
+                                    <input type="number" name="denominations[]" placeholder="150.0">
+                                    <button type="button" class="remove-denomination" onclick="removeDenomination(this)">Remove</button>
+                                </div>
+                                <div class="denomination-row">
+                                    <input type="number" name="denominations[]" placeholder="200.0">
+                                    <button type="button" class="remove-denomination" onclick="removeDenomination(this)">Remove</button>
+                                </div>
+                            </div>
+                            <button type="button" class="add-denomination" onclick="addDenomination()">Add denomination</button>
+                        </div>
+                        
+                </div>
+                <div class="col2">
+                    <div class="form-section status-section">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option id="status active" value="active">Active</option>
+                            <option id="status draft" value="draft">Draft</option>
+                            <option id="status archived" value="archived">Archived</option>
+                        </select>
+                    </div>
+                    <div class="form-section">
+                        <label for="product-type">Product Type</label>
+                        <input type="text" id="product-type" name="product_type" placeholder="Type of Products">
+                    </div>
+                    <div class="form-section">
+                        <label for="inventory">Inventory</label>
+                        <input type="number" id="vendor" name="vendor" placeholder="100.00">
+                    </div>
+                    <div class="form-section">
+                        <label for="collections">Collections</label>
+                        <input type="text" id="collections" name="collections" placeholder="Add Collections">
+                    </div>
+                    <div class="form-section">
+                        <label for="template">Theme Template</label>
+                        <select id="template" name="template">
+                            <option value="default">Default Product</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="save_div">
+            <button type="reset" class="cancel-button">Cancel</button>
+            <button type="submit" class="save-button">Save Product</button>
+        </div>
+    </form>
+        </main>
+    </div>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="pro_script.js"></script>
+    <script src="script.js"></script>
+    <script>
+function updateSelectValue(selectElement) {
+    selectElement.setAttribute('value', selectElement.value);
+}
+function updateSelectValue2(selectElement) {
+    const value = selectElement.value;
+    formatDoc('fontSize', value);
+    selectElement.value = value;  // Retain the selected value
+}
+</script>
+</body>
+</html>
